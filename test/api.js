@@ -8,6 +8,7 @@ if( !apiKey){
 }
 
 
+// TODO Tests for bounds, region and componentFilters
 describe('GeoCoder', function(){
 
   describe('initialization', function(){
@@ -22,6 +23,26 @@ describe('GeoCoder', function(){
 
     })
 
+    it('should throw error on insufficiently formed bounds', function(done) {
+        
+      (function() {
+        geocoder({
+          key: apiKey,
+          bounds: {
+            southWest: {
+              lat: 34.172684,
+              lng: -118.604794
+            },
+            northEast: {
+              lat: 34.236144
+            }
+          }
+        });
+      }).should.throw(/Property `bounds` insufficiently formed/i);
+
+      done();
+
+    })
 
   })
 

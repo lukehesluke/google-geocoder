@@ -20,7 +20,22 @@ Wrapper for Google's Geocoder API.
 var geocoder = require('google-geocoder');
 
 var geo = geocoder({
-  key: 'your API key from google'
+  key: 'your API key from google',  // Required
+  bounds: {                         // Optional. Prefer results within this viewport (See: https://developers.google.com/maps/documentation/geocoding/intro#Viewports)
+    southWest: {
+      lat: 34.172684,
+      lng: -118.604794
+    },
+    northEast: {
+      lat: 34.236144,
+      lng: -118.500938
+    }
+  },
+  region: 'uk',                     // Optional. Results are biased to this region (See: https://developers.google.com/maps/documentation/geocoding/intro#RegionCodes)
+  componentFilters: [               // Optional. Restrict results to given components (See: https://developers.google.com/maps/documentation/geocoding/intro#ComponentFiltering)
+    'administrative_area:Greater London',
+    'country:GB'
+  ]
 });
 
 geo.find('223 Edenbridge Dr, Toronto', function(err, res){

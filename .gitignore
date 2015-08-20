@@ -1,2 +1,6 @@
 test/fixtures/google-api-key.js
 .coveralls.yml
+node_modules/
+
+# Vim swap files
+.*.sw?
